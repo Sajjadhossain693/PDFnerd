@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #07090E; /* Deep Obsidian Dark Canvas */
+    color: #F1F5F9;            /* Crisp Readable Text */
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom subtle dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #07090E;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1E2638;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2D3748;
+  }
+}
+
+@layer components {
+  /* Cards */
+  .spark-card {
+    background-color: #0D111C;
+    border: 1px solid #1E2638;
+    border-radius: 1.15rem;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+    transition: all 0.25s ease-in-out;
+    color: #F1F5F9;
+  }
+
+  .spark-card-hover {
+    @apply spark-card;
+  }
+  .spark-card-hover:hover {
+    border-color: #2F3B52;
+    background-color: #121726;
+    box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+  }
+
+  /* Alert Card */
+  .alert-green-card {
+    background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 1px solid #E2E8F0;
+    border-radius: 1.15rem;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 175px;
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .alert-green-bg-shape {
+    position: absolute;
+    right: -25px;
+    bottom: -25px;
+    width: 140px;
+    height: 140px;
+    opacity: 0.12;
+    pointer-events: none;
+    transition: transform 0.6s ease;
+  }
+  .alert-green-card:hover .alert-green-bg-shape {
+    transform: rotate(45deg) scale(1.08);
+  }
+
+  .alert-green-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem 0.65rem;
+    background: #0F172A;
+    color: #FFFFFF !important;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 9999px;
+    letter-spacing: 0.04em;
+  }
+
+  .alert-green-date {
+    color: #64748B;
+    font-size: 0.8rem;
+    margin-top: 0.65rem;
+    font-weight: 500;
+  }
+
+  .alert-green-text {
+    color: #0F172A;
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-top: 0.25rem;
+  }
+
+  .alert-green-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #0F172A;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: gap 0.2s ease;
+    margin-top: 1rem;
+  }
+  .alert-green-link:hover {
+    gap: 0.7rem;
+    color: #334155;
+  }
+
+  /* Trend Badges */
+  .trend-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.22rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .trend-up {
+    background: #ECFDF5;
+    color: #059669;
+    border: 1px solid #A7F3D0;
+  }
+  .trend-down {
+    background: #FFF7ED;
+    color: #EA580C;
+    border: 1px solid #FED7AA;
+  }
+
+  /* Primary High-Contrast Buttons */
+  .btn-lime {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #FF5E62 0%, #FF8E53 100%);
+    color: #FFFFFF !important;
+    font-weight: 700;
+    border-radius: 0.85rem;
+    padding: 0.65rem 1.4rem;
+    transition: all 0.2s ease;
+    border: none;
+    box-shadow: 0 4px 16px rgba(255, 94, 98, 0.3);
+  }
+  .btn-lime:hover {
+    background: linear-gradient(135deg, #F04D51 0%, #FF7E40 100%);
+    box-shadow: 0 6px 22px rgba(255, 94, 98, 0.45);
+    transform: translateY(-1px);
+    color: #FFFFFF !important;
+  }
+  .btn-lime:active {
+    transform: translateY(0);
+  }
+
+  .btn-forest-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: #0D111C;
+    color: #CBD5E1;
+    font-weight: 600;
+    border: 1px solid #1E2638;
+    border-radius: 0.85rem;
+    padding: 0.65rem 1.4rem;
+    transition: all 0.2s ease;
+  }
+  .btn-forest-outline:hover {
+    background: #141A28;
+    border-color: #2F3B52;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+  }
+
+  /* Input Fields */
+  .spark-input {
+    background-color: #0D111C;
+    border: 1px solid #1E2638;
+    border-radius: 0.85rem;
+    color: #FFFFFF;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    outline: none;
+    transition: all 0.2s ease;
+  }
+  .spark-input::placeholder {
+    color: #64748B;
+  }
+  .spark-input:focus {
+    border-color: #FF8E53;
+    box-shadow: 0 0 0 3px rgba(255, 142, 83, 0.15);
+  }
+
+  /* Section Container */
+  .section-container {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}
+
+/* Background dark grid with screenshot glowing tones */
+.bg-forest-grid {
+  background-color: #07090E;
+  background-image: 
+    radial-gradient(circle at 65% 15%, rgba(249, 115, 22, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 90% 35%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 10% 25%, rgba(16, 185, 129, 0.04) 0%, transparent 40%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+/* ─── Interactive 3D & Cursor Movement Utilities ────────────────────────── */
+:root {
+  --color-primary-gradient: linear-gradient(135deg, #FF5E62 0%, #FF8E53 55%, #10B981 100%);
+  --color-accent-gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #EC4899 100%);
+}
+
+.btn-outline-primary {
+  position: relative;
+  border-radius: 0.85rem;
+  padding: 0.65rem 1.4rem;
+  border: none;
+  color: #FFFFFF;
+  font-weight: 700;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: #0D111C;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.5px;
+  background: var(--color-primary-gradient);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  transition: opacity 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background: #141A28;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.5);
+}
+
+.btn-outline-primary:active {
+  transform: translateY(0);
+}
+
+/* 3D Perspective Containers */
+.perspective-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Cursor-driven Spotlight Card */
+/* ─── Global Dark Theme Overrides (Crystal Clear Readability) ────────── */
+
+/* 1. All Headings Default to Bright White */
+h1, h2, h3, h4, h5, h6 {
+  color: #FFFFFF !important;
+}
+
+/* 2. Text Color Utilities Mapped to High Contrast Dark Palette */
+.text-slate-900:not(.a4-paper *),
+.text-gray-900:not(.a4-paper *),
+.text-zinc-900:not(.a4-paper *) {
+  color: #FFFFFF !important;
+}
+
+.text-slate-800:not(.a4-paper *),
+.text-gray-800:not(.a4-paper *),
+.text-zinc-800:not(.a4-paper *) {
+  color: #F8FAFC !important;
+}
+
+.text-slate-700:not(.a4-paper *),
+.text-gray-700:not(.a4-paper *),
+.text-zinc-700:not(.a4-paper *) {
+  color: #E2E8F0 !important;
+}
+
+.text-slate-600:not(.a4-paper *),
+.text-gray-600:not(.a4-paper *),
+.text-zinc-600:not(.a4-paper *) {
+  color: #CBD5E1 !important;
+}
+
+.text-slate-500:not(.a4-paper *),
+.text-gray-500:not(.a4-paper *),
+.text-zinc-500:not(.a4-paper *) {
+  color: #CBD5E1 !important;
+}
+
+.text-slate-400:not(.a4-paper *),
+.text-gray-400:not(.a4-paper *),
+.text-zinc-400:not(.a4-paper *) {
+  color: #94A3B8 !important;
+}
+
+/* 3. Card Surfaces: Automatically render as dark obsidian cards across all pages */
+.bg-white:not(.a4-paper):not(.a4-paper *):not(.btn-lime):not(.btn-lime *):not(.badge-exclude) {
+  background-color: #0D111C !important;
+  border-color: #1E2638 !important;
+  color: #F1F5F9;
+}
+
+.bg-slate-50:not(.a4-paper):not(.a4-paper *),
+.bg-slate-100:not(.a4-paper):not(.a4-paper *) {
+  background-color: #131826 !important;
+  border-color: #1E2638 !important;
+}
+
+.bg-slate-200:not(.a4-paper):not(.a4-paper *) {
+  background-color: #182030 !important;
+  border-color: #242E44 !important;
+}
+
+.border-slate-200,
+.border-slate-100 {
+  border-color: #1E2638 !important;
+}
+
+.border-slate-300 {
+  border-color: #2A364C !important;
+}
+
+/* 4. Pastel Badges Mapped to Sleek Dark Translucent Pills */
+.bg-blue-50 {
+  background-color: rgba(59, 130, 246, 0.12) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  color: #60A5FA !important;
+}
+.bg-blue-50 * {
+  color: #60A5FA !important;
+}
+
+.bg-emerald-50 {
+  background-color: rgba(16, 185, 129, 0.12) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  color: #34D399 !important;
+}
+.bg-emerald-50 * {
+  color: #34D399 !important;
+}
+
+.bg-purple-50 {
+  background-color: rgba(168, 85, 247, 0.12) !important;
+  border: 1px solid rgba(168, 85, 247, 0.3) !important;
+  color: #C084FC !important;
+}
+.bg-purple-50 * {
+  color: #C084FC !important;
+}
+
+.bg-rose-50 {
+  background-color: rgba(244, 63, 94, 0.12) !important;
+  border: 1px solid rgba(244, 63, 94, 0.3) !important;
+  color: #FB7185 !important;
+}
+.bg-rose-50 * {
+  color: #FB7185 !important;
+}
+
+.bg-amber-50 {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  color: #FBBF24 !important;
+}
+.bg-amber-50 * {
+  color: #FBBF24 !important;
+}
+
+.bg-indigo-50 {
+  background-color: rgba(99, 102, 241, 0.12) !important;
+  border: 1px solid rgba(99, 102, 241, 0.3) !important;
+  color: #818CF8 !important;
+}
+.bg-indigo-50 * {
+  color: #818CF8 !important;
+}
+
+.bg-cyan-50 {
+  background-color: rgba(6, 182, 212, 0.12) !important;
+  border: 1px solid rgba(6, 182, 212, 0.3) !important;
+  color: #22D3EE !important;
+}
+.bg-cyan-50 * {
+  color: #22D3EE !important;
+}
+
+/* 5. Inputs, Selects, and Textareas */
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):not(.a4-paper *),
+select:not(.a4-paper *),
+textarea:not(.a4-paper *) {
+  background-color: #121622 !important;
+  border: 1px solid #1E2638 !important;
+  color: #FFFFFF !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748B !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #FF8E53 !important;
+  outline: none;
+}
+
+/* 6. Preservation of A4 Printable Sheet */
+.a4-paper {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+.a4-paper h1,
+.a4-paper h2,
+.a4-paper h3,
+.a4-paper h4,
+.a4-paper h5,
+.a4-paper h6,
+.a4-paper p,
+.a4-paper span,
+.a4-paper div {
+  color: inherit;
+}
+
+@media print {
+  body {
+    background: #FFFFFF !important;
+  }
+  nav, footer, .no-print {
+    display: none !important;
+  }
+  #academic-cover-preview {
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    transform: none !important;
+  }
+}
+
+
+

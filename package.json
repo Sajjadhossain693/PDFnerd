@@ -1,0 +1,12 @@
+{
+  "name": "pdfinity-workspace",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix server start",
+    "build": "npm --prefix client run build",
+    "dev": "npm --prefix client run dev",
+    "dev:server": "npm --prefix server start",
+    "dev:client": "npm --prefix client run dev"
+  }
+}
