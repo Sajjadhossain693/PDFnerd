@@ -194,7 +194,7 @@ const generateStudyMaterials = async (filePath, options = {}) => {
     mcqs,
     shortQuestions,
     revisionNotes,
-    disclaimer: 'Generated via PDFinity AI Study Engine. Content is derived from document text extraction and should be reviewed alongside source course materials.',
+    disclaimer: 'Generated via PDFnerd AI Study Engine. Content is derived from document text extraction and should be reviewed alongside source course materials.',
   };
 };
 

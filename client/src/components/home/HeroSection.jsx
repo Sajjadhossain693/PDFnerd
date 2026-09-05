@@ -18,21 +18,21 @@ export default function HeroSection() {
   };
 
   const workspaces = [
-    { to: '/academic', title: 'Academic Studio', desc: 'Cover creator & multi-page doc builder', icon: 'bi-mortarboard-fill', color: 'text-amber-400', bg: 'bg-amber-500/10', badge: 'Creator' },
-    { to: '/health', title: 'PDF Health & Doctor', desc: '0-100 diagnostic & automated healing', icon: 'bi-heart-pulse-fill', color: 'text-emerald-400', bg: 'bg-emerald-500/10', badge: 'Intelligence' },
-    { to: '/accessibility', title: 'Accessibility & Compliance', desc: 'PDF/UA-1 & WCAG 2.2 audit rules', icon: 'bi-universal-access', color: 'text-purple-400', bg: 'bg-purple-500/10', badge: 'Standards' },
-    { to: '/privacy-scanner', title: 'Privacy & Security', desc: 'PII detection & document sanitization', icon: 'bi-shield-check', color: 'text-rose-400', bg: 'bg-rose-500/10', badge: 'Security' },
-    { to: '/study', title: 'Exam & Study Mode', desc: 'Summary, 3D flashcards & MCQ quiz', icon: 'bi-book-half', color: 'text-cyan-400', bg: 'bg-cyan-500/10', badge: 'Study Kit' },
-    { to: '/workflows', title: 'One-Click Workflows', desc: 'Chained pipelines executed in 1 click', icon: 'bi-diagram-3-fill', color: 'text-orange-400', bg: 'bg-orange-500/10', badge: 'Automation' },
+    { to: '/cover-page', title: 'Direct Cover Page', desc: 'Create DIU assignment & report cover pages instantly', icon: 'bi-file-earmark-richtext', color: 'text-blue-400', bg: 'bg-blue-500/10', badge: 'Cover Creator' },
+    { to: '/tools/pdf-editor', title: 'PDF Editor', desc: 'Edit, annotate, highlight, sign & stamp documents', icon: 'bi-pen-fill', color: 'text-emerald-400', bg: 'bg-emerald-500/10', badge: 'Edit & Sign' },
+    { to: '/tools/jpg-to-pdf', title: 'PDF Converter', desc: 'PDF ↔ Word, JPG, Excel, PPT bidirectional formats', icon: 'bi-arrow-left-right', color: 'text-amber-400', bg: 'bg-amber-500/10', badge: 'Converter' },
+    { to: '/tools/compress-pdf', title: 'PDF Compressor', desc: 'Reduce file size drastically with stream compression', icon: 'bi-file-zip-fill', color: 'text-rose-400', bg: 'bg-rose-500/10', badge: 'Compressor' },
+    { to: '/tools/merge-pdf', title: 'PDF Organizer', desc: 'Merge, split, rotate, extract & reorder document pages', icon: 'bi-layers-fill', color: 'text-purple-400', bg: 'bg-purple-500/10', badge: 'Organizer' },
+    { to: '/ai-assistant', title: 'AI PDF Assistant', desc: 'Ask questions, summarize, extract insights & chat with PDFs', icon: 'bi-stars', color: 'text-cyan-400', bg: 'bg-cyan-500/10', badge: 'AI Assistant' },
   ];
 
   const popularChips = [
-    { label: 'Getting Started', to: '/tools' },
-    { label: 'Academic Studio', to: '/academic' },
-    { label: 'PDF Health', to: '/health' },
-    { label: 'Privacy Shield', to: '/privacy-scanner' },
-    { label: 'Study Mode', to: '/study' },
-    { label: 'Configurations', to: '/workflows' },
+    { label: 'Cover Page Creator', to: '/cover-page' },
+    { label: 'PDF Editor', to: '/tools/pdf-editor' },
+    { label: 'PDF Converter', to: '/tools/jpg-to-pdf' },
+    { label: 'PDF Compressor', to: '/tools/compress-pdf' },
+    { label: 'PDF Organizer', to: '/tools/merge-pdf' },
+    { label: 'AI PDF Assistant', to: '/ai-assistant' },
   ];
 
   return (
@@ -115,7 +115,7 @@ export default function HeroSection() {
 
           {/* Subtitle description */}
           <p className="text-zinc-400 text-sm sm:text-base mt-4 max-w-xl mx-auto leading-relaxed">
-            Discover tips, resources, and guidance to maximize experience with PDFinity.
+            Discover tips, resources, and guidance to maximize experience with PDFnerd.
           </p>
 
           {/* ─── SCREENSHOT-MATCHED SEARCH BAR (DARK PILL WITH CTRL+K) ─── */}
@@ -160,11 +160,11 @@ export default function HeroSection() {
           {/* Quick Action Badges */}
           <div className="flex flex-wrap items-center justify-center gap-3 mt-7">
             <Link
-              to="/academic"
+              to="/cover-page"
               className="btn-lime text-xs uppercase tracking-wider py-3 px-5 shadow-lg shadow-orange-500/20"
             >
-              <i className="bi bi-mortarboard-fill"></i>
-              <span>Academic Studio</span>
+              <i className="bi bi-file-earmark-richtext"></i>
+              <span>Cover Page Creator</span>
             </Link>
 
             <Link
@@ -210,7 +210,7 @@ export default function HeroSection() {
         {/* 6 Core Workspaces Grid with Cursor-Driven 3D Tilt */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {workspaces.map((w, i) => (
-            <Tilt3DCard key={i} maxTilt={10} scale={1.03}>
+            <Tilt3DCard key={i} maxTilt={10} scale={1.03} className="h-full">
               <Link
                 to={w.to}
                 className="p-5 rounded-3xl bg-[#0D111C] border border-[#1E2638] shadow-xl hover:border-zinc-500 hover:bg-[#121726] transition-all flex flex-col justify-between h-full group text-left relative overflow-hidden"

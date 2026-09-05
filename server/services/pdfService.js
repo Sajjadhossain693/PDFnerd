@@ -105,8 +105,8 @@ const compressPdf = async (filePath) => {
   pdfDoc.setAuthor('');
   pdfDoc.setSubject('');
   pdfDoc.setKeywords([]);
-  pdfDoc.setProducer('PDFinity');
-  pdfDoc.setCreator('PDFinity');
+  pdfDoc.setProducer('PDFnerd');
+  pdfDoc.setCreator('PDFnerd');
 
   // Save with compression
   const compressedBytes = await pdfDoc.save({ useObjectStreams: true });
@@ -279,7 +279,7 @@ const protectPdf = async (filePath, userPassword) => {
   // Phase 4 will integrate qpdf for real encryption
   const bytes = fs.readFileSync(filePath);
   const pdfDoc = await PDFDocument.load(bytes);
-  pdfDoc.setProducer(`PDFinity (Protected)`);
+  pdfDoc.setProducer(`PDFnerd (Protected)`);
   return savePdf(pdfDoc, 'protected');
 };
 

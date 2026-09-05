@@ -31,54 +31,65 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' }, // Allow file downloads
 }));
 
-// Parse CLIENT_URL (supports comma-separated origins)
-const clientUrls = (process.env.CLIENT_URL || '')
-  .split(',')
-  .map((origin) => origin.trim().replace(/\/+$/, ''))
-  .filter(Boolean);
-
-const devOrigins = [
+// ─── CORS Configuration ──────────────────────────────────────────────────────
+const defaultAllowedOrigins = [
+  'https://pdf-nerd.vercel.app',
   'http://localhost:5173',
   'http://127.0.0.1:5173',
   'http://localhost:5000',
   'http://127.0.0.1:5000',
   'http://localhost:3000',
+  'http://127.0.0.1:3000',
 ];
 
-const isProduction = process.env.NODE_ENV === 'production';
+const envOrigins = (process.env.CLIENT_URL || '')
+  .split(',')
+  .map((origin) => origin.trim().replace(/\/+$/, ''))
+  .filter(Boolean);
 
-app.use(cors({
+const allowedOrigins = Array.from(new Set([...defaultAllowedOrigins, ...envOrigins]));
+
+const corsOptions = {
   origin: (origin, callback) => {
-    // Allow non-browser requests (server-to-server, health checkers, curl)
+    // Allow non-browser requests (server-to-server, health checkers, curl, render probes)
     if (!origin) return callback(null, true);
 
     const normalizedOrigin = origin.replace(/\/+$/, '');
 
-    // Allow explicitly configured client URLs
-    if (clientUrls.includes(normalizedOrigin)) {
+    // Check exact match in configured & default allowed origins
+    if (allowedOrigins.includes(normalizedOrigin)) {
       return callback(null, true);
     }
 
-    // In development mode, allow localhost and local network addresses
-    if (!isProduction) {
+    // Support Vercel preview branch deployments (e.g., https://pdf-nerd-git-*.vercel.app)
+    if (/^https:\/\/pdf-nerd(-[a-z0-9-]+)?\.vercel\.app$/.test(normalizedOrigin)) {
+      return callback(null, true);
+    }
+
+    // In development mode, allow any local network address
+    if (process.env.NODE_ENV !== 'production') {
       if (
-        devOrigins.includes(normalizedOrigin) ||
         normalizedOrigin.startsWith('http://localhost:') ||
         normalizedOrigin.startsWith('http://127.0.0.1:') ||
-        normalizedOrigin.startsWith('http://192.168.')
+        normalizedOrigin.startsWith('http://192.168.') ||
+        normalizedOrigin.startsWith('http://10.')
       ) {
         return callback(null, true);
       }
     }
 
-    // Disallow without throwing a 500 error
+    // Disallow origin safely without throwing unhandled 500 error
     return callback(null, false);
   },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+  exposedHeaders: ['Content-Disposition', 'X-Original-Size', 'X-Compressed-Size', 'X-Saved-Percent'],
   optionsSuccessStatus: 200,
-}));
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 // ─── General Middleware ───────────────────────────────────────────────────────
 app.use(express.json({ limit: '25mb' }));
@@ -96,7 +107,7 @@ const { recordVisit, getStats } = require('./utils/statsTracker');
 app.get('/api/health', (_req, res) => {
   res.status(200).json({
     success: true,
-    message: 'PDFinity API is running',
+    message: 'PDFnerd API is running',
     version: '2.0.0',
     timestamp: new Date().toISOString(),
   });
@@ -141,7 +152,7 @@ process.on('uncaughtException', (err) => {
 // ─── Start Server ─────────────────────────────────────────────────────────────
 if (require.main === module) {
   const server = app.listen(PORT, () => {
-    console.log(`\n🚀 PDFinity API running on port ${PORT}`);
+    console.log(`\n🚀 PDFnerd API running on port ${PORT}`);
     console.log(`📁 Environment: ${process.env.NODE_ENV || 'development'}`);
     startCleanupJob();
   });

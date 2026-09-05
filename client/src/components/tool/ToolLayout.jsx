@@ -254,7 +254,7 @@ export default function ToolLayout({
                 </button>
               </div>
 
-              {/* PDFinity Intelligent Flow: Recommended Next Actions */}
+              {/* PDFnerd Intelligent Flow: Recommended Next Actions */}
               <RecommendedActions
                 currentTool={title}
                 outputFilename={outputFilename}

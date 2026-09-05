@@ -19,7 +19,7 @@ import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import ForgotPassword from './pages/auth/ForgotPassword';
 
-// PDFinity Specialized Workspaces
+// PDFnerd Specialized Workspaces
 import AcademicStudio from './pages/academic/AcademicStudio';
 import AcademicTextTools from './pages/academic/AcademicTextTools';
 import CoverPageGenerator from './pages/academic/CoverPageGenerator';
@@ -54,7 +54,7 @@ function NotFound() {
       </span>
       <h1 className="text-5xl font-black text-slate-900 mb-2">Workspace Page Not Found</h1>
       <p className="text-slate-500 text-xs sm:text-sm max-w-md mb-6">
-        The requested PDFinity tool or workspace view was not found on this system.
+        The requested PDFnerd tool or workspace view was not found on this system.
       </p>
       <a href="/" className="btn-lime text-xs uppercase tracking-wider py-3 px-6">
         Return to Workspace Home
@@ -101,20 +101,32 @@ export default function App() {
               <Route path="privacy-policy" element={<PrivacyPolicy />} />
               <Route path="terms-of-service" element={<TermsOfService />} />
 
-              {/* PDFinity Specialized Intelligent Workspaces */}
+              {/* PDFnerd Specialized Intelligent Workspaces */}
               <Route path="cover-page" element={<CoverPageGenerator />} />
               <Route path="academic" element={<AcademicStudio />} />
               <Route path="academic/tools" element={<AcademicTextTools />} />
               <Route path="health" element={<PdfHealthPage />} />
+              <Route path="pdf-health" element={<Navigate to="/health" replace />} />
               <Route path="doctor" element={<PdfDoctorPage />} />
+              <Route path="pdf-doctor" element={<Navigate to="/doctor" replace />} />
               <Route path="accessibility" element={<AccessibilityPage />} />
+              <Route path="compliance" element={<Navigate to="/accessibility" replace />} />
               <Route path="privacy-scanner" element={<PrivacyScannerPage />} />
+              <Route path="privacy" element={<Navigate to="/privacy-scanner" replace />} />
+              <Route path="privacy-scan" element={<Navigate to="/privacy-scanner" replace />} />
               <Route path="study" element={<StudyModePage />} />
+              <Route path="study-mode" element={<Navigate to="/study" replace />} />
+              <Route path="exam-mode" element={<Navigate to="/study" replace />} />
               <Route path="ai-assistant" element={<AiAssistantPage />} />
               <Route path="workflows" element={<WorkflowsPage />} />
+              <Route path="workflow" element={<Navigate to="/workflows" replace />} />
               <Route path="workspace" element={<UnifiedWorkspacePage />} />
 
               {/* Core 20+ PDF Utility Routes */}
+              <Route path="tools/pdf-editor" element={<GenericToolPage toolOverride="pdf-editor" />} />
+              <Route path="tools/pdf-converter" element={<Navigate to="/tools/jpg-to-pdf" replace />} />
+              <Route path="tools/pdf-compressor" element={<Navigate to="/tools/compress-pdf" replace />} />
+              <Route path="tools/pdf-organizer" element={<Navigate to="/tools/merge-pdf" replace />} />
               <Route path="tools/merge-pdf" element={<MergePdf />} />
               <Route path="tools/split-pdf" element={<SplitPdf />} />
               <Route path="tools/compress-pdf" element={<CompressPdf />} />

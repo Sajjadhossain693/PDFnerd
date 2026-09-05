@@ -245,10 +245,10 @@ const healPdfDocument = async (filePath, selectedFixes = ['fix-metadata', 'norma
   if (selectedFixes.includes('fix-metadata')) {
     const baseName = path.basename(filePath, path.extname(filePath)).replace(/[_|-]+/g, ' ');
     pdfDoc.setTitle(baseName);
-    pdfDoc.setAuthor('PDFinity Academic Suite');
+    pdfDoc.setAuthor('PDFnerd Academic Suite');
     pdfDoc.setSubject('Document Intelligence & Optimization');
-    pdfDoc.setCreator('PDFinity v2.0 Workspace');
-    pdfDoc.setProducer('PDFinity Engine (pdf-lib)');
+    pdfDoc.setCreator('PDFnerd v2.0 Workspace');
+    pdfDoc.setProducer('PDFnerd Engine (pdf-lib)');
     fixesApplied.push('Injected clean standardized metadata');
   }
 

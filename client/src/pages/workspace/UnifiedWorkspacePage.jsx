@@ -68,7 +68,7 @@ export default function UnifiedWorkspacePage() {
             <div className="max-w-md mx-auto">
               <h3 className="text-lg font-black text-white">Your Workspace is Ready</h3>
               <p className="text-xs text-zinc-400 mt-1">
-                Upload a document here to keep it in your active tray across all 26+ PDFinity utilities and intelligent tools.
+                Upload a document here to keep it in your active tray across all 26+ PDFnerd utilities and intelligent tools.
               </p>
             </div>
 

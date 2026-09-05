@@ -88,12 +88,12 @@ export default function Dashboard() {
     <div className="min-h-screen bg-forest-canvas pb-20">
       <div className="section-container pt-8">
         
-        {/* START: Dashboard Header Banner matching PDFinity */}
+        {/* START: Dashboard Header Banner matching PDFnerd */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-8 border-b border-forest-border">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-lime-accent text-xs font-bold uppercase tracking-wider">
-                PDFinity Workspace Console
+                PDFnerd Workspace Console
               </span>
               <span className="text-forest-border">•</span>
               <span className="text-xs text-forest-textMuted font-medium">

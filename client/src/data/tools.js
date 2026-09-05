@@ -5,6 +5,17 @@
 export const ALL_TOOLS = [
   // ── 1. Organize
   {
+    id: 'pdf-organizer',
+    name: 'PDF Organizer',
+    description: 'Merge, split, rotate, delete, and reorder document pages effortlessly.',
+    icon: 'bi-layers-fill',
+    to: '/tools/merge-pdf',
+    category: 'organize',
+    badge: 'Popular',
+    status: 'ready',
+    color: '#818CF8',
+  },
+  {
     id: 'merge-pdf',
     name: 'Merge PDF',
     description: 'Combine multiple PDF files into one clean, organized document.',
@@ -58,6 +69,17 @@ export const ALL_TOOLS = [
   },
 
   // ── 2. Convert
+  {
+    id: 'pdf-converter',
+    name: 'PDF Converter',
+    description: 'PDF ↔ Word, JPG, Excel, PPT bidirectional high-fidelity format conversion.',
+    icon: 'bi-arrow-left-right',
+    to: '/tools/jpg-to-pdf',
+    category: 'convert',
+    badge: 'Popular',
+    status: 'ready',
+    color: '#FBBF24',
+  },
   {
     id: 'jpg-to-pdf',
     name: 'JPG to PDF',
@@ -113,6 +135,17 @@ export const ALL_TOOLS = [
   },
 
   // ── 3. Optimize & Edit
+  {
+    id: 'pdf-editor',
+    name: 'PDF Editor',
+    description: 'Edit, annotate, highlight, sign, stamp, and fill digital PDF documents.',
+    icon: 'bi-pen-fill',
+    to: '/tools/pdf-editor',
+    category: 'optimize',
+    badge: 'Popular',
+    status: 'ready',
+    color: '#34D399',
+  },
   {
     id: 'compress-pdf',
     name: 'Compress PDF',

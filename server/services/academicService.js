@@ -782,7 +782,7 @@ const generateCoverPdf = async (data = {}) => {
   });
 
   // Footer Tagline
-  const footerNote = 'Generated via PDFinity Academic Studio';
+  const footerNote = 'Generated via PDFnerd Academic Studio';
   const footerWidth = fontRegular.widthOfTextAtSize(footerNote, 7.5);
   page.drawText(footerNote, {
     x: (width - footerWidth) / 2,

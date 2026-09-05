@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   const isProduction = process.env.NODE_ENV === 'production';
-  const uri = process.env.MONGODB_URI || (!isProduction ? 'mongodb://localhost:27017/pdfinity' : null);
+  const uri = process.env.MONGODB_URI || (!isProduction ? 'mongodb://localhost:27017/pdfnerd' : null);
 
   if (!uri) {
     console.warn('⚠️  MONGODB_URI is not defined. Database features will be unavailable.');

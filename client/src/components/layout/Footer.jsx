@@ -36,7 +36,7 @@ export default function Footer() {
               
               {/* Gmail Button */}
               <a
-                href="mailto:dufferx99@gmail.com?subject=Inquiry%20from%20PDFinity"
+                href="mailto:dufferx99@gmail.com?subject=Inquiry%20from%20PDFnerd"
                 className="inline-flex items-center justify-center gap-2 w-full py-2 px-3 rounded-lg bg-[#EA4335] hover:bg-[#d3382b] text-white text-xs font-bold transition-all shadow-sm group"
                 title="Send direct email to Sajjad Hossain Siam"
               >
@@ -92,10 +92,10 @@ export default function Footer() {
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <div className="flex items-center gap-2">
             <span className="text-white font-semibold flex items-center gap-1.5">
-              <i className="bi bi-mortarboard-fill text-amber-400 text-sm"></i> PDFinity
+              <i className="bi bi-mortarboard-fill text-amber-400 text-sm"></i> PDFnerd
             </span>
             <span className="text-zinc-700">|</span>
-            <span>&copy; {new Date().getFullYear()} PDFinity. Powered by Open Source Stack.</span>
+            <span>&copy; {new Date().getFullYear()} PDFnerd. Powered by Open Source Stack.</span>
           </div>
           <div className="flex items-center gap-4 text-zinc-400">
             <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>

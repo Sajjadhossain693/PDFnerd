@@ -113,7 +113,7 @@ export default function PdfDoctorPage() {
                     Select Automated Treatments
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    PDFinity only executes deterministic, non-destructive repairs.
+                    PDFnerd only executes deterministic, non-destructive repairs.
                   </p>
                 </div>
 
@@ -214,7 +214,7 @@ export default function PdfDoctorPage() {
               </span>
               <h2 className="text-2xl font-black text-slate-900 mt-2">Document Restored & Optimized</h2>
               <p className="text-xs text-slate-500 mt-1 max-w-md mx-auto">
-                PDFinity Doctor executed non-destructive repairs. Inspect the before-and-after diagnostic comparison below:
+                PDFnerd Doctor executed non-destructive repairs. Inspect the before-and-after diagnostic comparison below:
               </p>
             </div>
 

@@ -199,8 +199,8 @@ const sanitizePdfDocument = async (filePath, options = {}) => {
     pdfDoc.setAuthor('');
     pdfDoc.setSubject('');
     pdfDoc.setKeywords([]);
-    pdfDoc.setProducer('PDFinity Privacy Shield (Sanitized)');
-    pdfDoc.setCreator('PDFinity');
+    pdfDoc.setProducer('PDFnerd Privacy Shield (Sanitized)');
+    pdfDoc.setCreator('PDFnerd');
     actionsDone.push('Scrubbed author, title, subject, and system tags');
   }
 

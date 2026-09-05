@@ -1,14 +1,27 @@
 import axios from 'axios';
 
 const rawApiUrl = import.meta.env.VITE_API_URL;
-export const API_BASE_URL = rawApiUrl ? rawApiUrl.replace(/\/+$/, '') : '/api';
+
+const getBaseUrl = () => {
+  if (rawApiUrl && rawApiUrl.trim()) {
+    const trimmed = rawApiUrl.trim().replace(/\/+$/, '');
+    return trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`;
+  }
+  // In production builds where VITE_API_URL might not have been provided at build time
+  if (import.meta.env.PROD && typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')) {
+    return 'https://pdfnerd.onrender.com/api';
+  }
+  return '/api';
+};
+
+export const API_BASE_URL = getBaseUrl();
 
 /**
  * Resolve an API or file download path to a fully-qualified or proxy-compatible URL.
  * Handles:
  * - Full URLs (e.g. https://...) -> unchanged
  * - Blob/data URLs -> unchanged
- * - Relative API paths (e.g. /api/pdf/download/...) -> resolved against API_BASE_URL
+ * - Relative API paths (e.g. /api/pdf/download/... or pdf/download/...) -> resolved against API_BASE_URL
  */
 export const resolveApiUrl = (url) => {
   if (!url) return '';
@@ -28,10 +41,19 @@ const api = axios.create({
   withCredentials: true,
 });
 
-// Attach JWT token to every request if present
+// Normalize request URLs to prevent accidental /api/api double-prefixing and attach JWT
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('pdfinity_token');
+    // If request URL starts with /api/, strip it since baseURL already has /api
+    if (config.url && typeof config.url === 'string') {
+      if (config.url.startsWith('/api/')) {
+        config.url = config.url.slice(4);
+      } else if (config.url === '/api') {
+        config.url = '/';
+      }
+    }
+
+    const token = localStorage.getItem('pdfnerd_token') || localStorage.getItem('pdfinity_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -50,6 +72,8 @@ api.interceptors.response.use(
   },
   (error) => {
     if (error.response?.status === 401) {
+      localStorage.removeItem('pdfnerd_token');
+      localStorage.removeItem('pdfnerd_user');
       localStorage.removeItem('pdfinity_token');
       localStorage.removeItem('pdfinity_user');
       // Don't redirect here — let components handle it

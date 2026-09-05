@@ -11,8 +11,8 @@ export const AuthProvider = ({ children }) => {
 
   // Restore session from localStorage on mount
   useEffect(() => {
-    const storedToken = localStorage.getItem('pdfinity_token');
-    const storedUser = localStorage.getItem('pdfinity_user');
+    const storedToken = localStorage.getItem('pdfnerd_token') || localStorage.getItem('pdfinity_token');
+    const storedUser = localStorage.getItem('pdfnerd_user') || localStorage.getItem('pdfinity_user');
     if (storedToken && storedUser) {
       setToken(storedToken);
       setUser(JSON.parse(storedUser));
@@ -21,8 +21,8 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const saveSession = (newToken, newUser) => {
-    localStorage.setItem('pdfinity_token', newToken);
-    localStorage.setItem('pdfinity_user', JSON.stringify(newUser));
+    localStorage.setItem('pdfnerd_token', newToken);
+    localStorage.setItem('pdfnerd_user', JSON.stringify(newUser));
     setToken(newToken);
     setUser(newUser);
   };
@@ -40,6 +40,8 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const logout = useCallback(() => {
+    localStorage.removeItem('pdfnerd_token');
+    localStorage.removeItem('pdfnerd_user');
     localStorage.removeItem('pdfinity_token');
     localStorage.removeItem('pdfinity_user');
     setToken(null);
@@ -51,7 +53,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const { data } = await authService.getMe();
       setUser(data.user);
-      localStorage.setItem('pdfinity_user', JSON.stringify(data.user));
+      localStorage.setItem('pdfnerd_user', JSON.stringify(data.user));
     } catch {
       logout();
     }

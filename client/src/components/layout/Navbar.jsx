@@ -48,14 +48,14 @@ export default function Navbar() {
           
           {/* Left: Brand & Workspaces Dropdown */}
           <div className="flex items-center gap-3 sm:gap-4">
-            {/* PDFinity Brand Logo */}
+            {/* PDFnerd Brand Logo */}
             <Link to="/" className="flex items-center gap-2.5 group">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FF4E64] via-[#FF6E51] to-[#FFA07A] flex items-center justify-center transition-transform group-hover:scale-105 shadow-md shadow-orange-500/20">
                 <i className="bi bi-mortarboard-fill text-white text-base"></i>
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-black tracking-tight text-white flex items-center gap-0.5">
-                  PDF<span className="text-[#FF8E53]">inity</span>
+                  PDF<span className="text-[#FF8E53]">nerd</span>
                 </span>
                 <span className="text-[9px] text-zinc-400 -mt-1 font-bold tracking-wider uppercase">
                   Intelligent Workspace

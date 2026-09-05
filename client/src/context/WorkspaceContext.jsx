@@ -24,17 +24,17 @@ export function WorkspaceProvider({ children }) {
   useEffect(() => {
     try {
       if (activeDocument) {
-        localStorage.setItem('pdfinity_active_doc', JSON.stringify(activeDocument));
+        localStorage.setItem('pdfnerd_active_doc', JSON.stringify(activeDocument));
       } else {
-        localStorage.removeItem('pdfinity_active_doc');
         localStorage.removeItem('pdfnerd_active_doc');
+        localStorage.removeItem('pdfinity_active_doc');
       }
     } catch {}
   }, [activeDocument]);
 
   useEffect(() => {
     try {
-      localStorage.setItem('pdfinity_doc_versions', JSON.stringify(documentVersions));
+      localStorage.setItem('pdfnerd_doc_versions', JSON.stringify(documentVersions));
     } catch {}
   }, [documentVersions]);
 

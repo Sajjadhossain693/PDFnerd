@@ -312,7 +312,7 @@ export default function AcademicStudio() {
               <span className="text-xs font-bold uppercase tracking-wider text-blue-600">Dynamic Profile Engine</span>
               <h2 className="text-2xl font-black text-slate-900 mt-1">Smart University Profiles</h2>
               <p className="text-xs text-slate-500 mt-1">
-                PDFinity uses a generic profile architecture. Selecting an institution automatically populates department programs, formatting guidelines, and default faculty details.
+                PDFnerd uses a generic profile architecture. Selecting an institution automatically populates department programs, formatting guidelines, and default faculty details.
               </p>
             </div>
 

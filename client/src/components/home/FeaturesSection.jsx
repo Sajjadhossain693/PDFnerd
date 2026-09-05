@@ -53,7 +53,7 @@ export default function FeaturesSection() {
             Built for Care & Precision
           </h2>
           <p className="text-zinc-400 text-sm mt-2">
-            Every PDF tool in the PDFinity suite follows stringent quality, privacy, and speed benchmarks.
+            Every PDF tool in the PDFnerd suite follows stringent quality, privacy, and speed benchmarks.
           </p>
         </div>
 
